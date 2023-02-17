@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import Portada from './components/Portada';
+import Voucher from './components/Voucher';
+import PagoForm from './components/PagoForm';
+import Result from './components/Result';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import CartContextProvider from './components/FormContext';
 import './App.css';
+import ComprarCard from './components/ComprarCard';
+import PdfViewer from './components/PdfViewer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <CartContextProvider>
+     <Routes>
+      <Route path='/' element={<Portada/>} />
+      <Route path='/pagoform' element={<PagoForm/>} />
+      <Route path='/pdfviewer' element={<PdfViewer/>} />
+      <Route path='/result' element={<Result/>} />
+      <Route path='/comprarcard' element={<ComprarCard/>} />
+      <Route path='/voucher' element={<Voucher/>} />
+    </Routes>
+    </CartContextProvider>
+    </BrowserRouter>
+  
   );
 }
 
